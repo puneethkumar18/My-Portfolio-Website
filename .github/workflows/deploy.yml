@@ -4,39 +4,31 @@ on:
   push:
     branches:
       - main
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout code from the repository
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20" # You can change this version based on your project requirements
+          node-version: "18"
 
-      # CLI install
-      - name: Install Netlify CLI
-        run: npm install -g netlify-cli
-        
-      # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      # Build the project
-      - name: Build the project
+      - name: Build project
         run: npm run build
 
-      # Deploy to Netlify using Netlify CLI
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
       - name: Deploy to Netlify
-        run: |
-          curl -sL https://github.com/netlify/cli/releases/download/v7.11.0/netlify-cli-linux-x64.tar.gz | tar xz
-          mv netlify /usr/local/bin/
-          netlify deploy --prod --dir=build/  # Use the appropriate build directory (e.g., 'dist' or 'build')
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: netlify deploy --dir=dist --prod
