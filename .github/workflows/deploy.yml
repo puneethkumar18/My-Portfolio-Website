@@ -1,0 +1,38 @@
+name: Deploy to Netlify
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16" # You can change this version based on your project requirements
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Build the project
+      - name: Build the project
+        run: npm run build
+
+      # Deploy to Netlify using Netlify CLI
+      - name: Deploy to Netlify
+        run: |
+          curl -sL https://github.com/netlify/cli/releases/download/v7.11.0/netlify-cli-linux-x64.tar.gz | tar xz
+          mv netlify /usr/local/bin/
+          netlify deploy --prod --dir=build/  # Use the appropriate build directory (e.g., 'dist' or 'build')
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
