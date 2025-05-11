@@ -37,10 +37,10 @@ const Header: React.FC = () => {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
-      localStorage.setItem('darkMode', 'true');
+      localStorage.setItem('darkMode', 'false');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('darkMode', 'false');
+      localStorage.setItem('darkMode', 'true');
     }
   }, [darkMode]);
 
