@@ -37,7 +37,7 @@ const SocialLinks: React.FC<SocialLinksProps> = ({ className = '', size = 24 }) 
         <BookOpen size={size} />
       </a>
       <a
-        href="https://example.com"
+        href="https://puneethkumar.netlify.app/"
         target="_blank"
         rel="noopener noreferrer"
         className={`transition-transform hover:scale-110 ${className}`}
