@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply text-gray-800 dark:text-gray-200;
+  }
+
+  ::selection {
+    @apply bg-blue-600/25;
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animations to sections */
+section {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Progress bar animation */
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: var(--progress-width);
+  }
+}
+
+/* Project card hover effects */
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Smooth transition for all elements */
+* {
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.3s;
+}
