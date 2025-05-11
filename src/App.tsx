@@ -33,7 +33,7 @@ function App() {
     window.addEventListener('hashchange', handleHashChange);
 
     // Update page title
-    document.title = 'John Doe | Frontend Developer';
+    document.title = 'Puneethkumar | Flutter Developer';
 
     // Clean up event listener
     return () => {
