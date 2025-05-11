@@ -22,7 +22,6 @@ jobs:
       # CLI install
       - name: Install Netlify CLI
         run: npm install -g netlify-cli
-        run: npm fund
         
       # Install dependencies
       - name: Install dependencies
