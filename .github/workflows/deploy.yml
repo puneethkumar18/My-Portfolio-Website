@@ -19,6 +19,9 @@ jobs:
         with:
           node-version: "20" # You can change this version based on your project requirements
 
+      # CLI install
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
       # Install dependencies
       - name: Install dependencies
         run: npm install
