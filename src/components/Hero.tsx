@@ -1,4 +1,5 @@
 import React from 'react';
+import myImage from './myImage.jpg'
 import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
@@ -37,7 +38,7 @@ const Hero: React.FC = () => {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-600 rounded-full blur-3xl opacity-20 dark:opacity-10"></div>
               <img
-                src="https://media.licdn.com/dms/image/v2/D5603AQHOssR4ptWhjg/profile-displayphoto-shrink_400_400/B56ZTmCArcGsAk-/0/1739026076428?e=1752710400&v=beta&t=cwmYBW0NEXB4Ap6W2BUY1z0wsjCBVhdaZXGnyvmZfbQ"
+                src=myImage
                 alt="Professional portrait"
                 className="relative z-10 rounded-full w-64 h-64 sm:w-80 sm:h-80 object-cover border-4 border-white dark:border-gray-800 shadow-xl"
               />
